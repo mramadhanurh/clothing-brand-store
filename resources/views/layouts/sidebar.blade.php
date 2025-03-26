@@ -25,33 +25,33 @@
 
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Master Data</span></li>
 
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ request()->is('kategori*') ? 'active' : '' }}">
+            <a href="/kategori" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-book-content"></i>
-                <div data-i18n="Data Jabatan">Data Jabatan</div>
+                <div data-i18n="Data Kategori">Data Kategori</div>
             </a>
         </li>
 
-        <li class="menu-item">
+        <!-- <li class="menu-item">
             <a href="#" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-spreadsheet"></i>
                 <div data-i18n="Data Pangkat">Data Pangkat</div>
             </a>
-        </li>
+        </li> -->
 
-        <li class="menu-item">
+        <!-- <li class="menu-item">
             <a href="#" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Data Bobot">Data Bobot</div>
             </a>
-        </li>
+        </li> -->
 
-        <li class="menu-item">
+        <!-- <li class="menu-item">
             <a href="#" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Data Kriteria">Data Kriteria</div>
             </a>
-        </li>
+        </li> -->
 
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Pengguna</span></li>
 
