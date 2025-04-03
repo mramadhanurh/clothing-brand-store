@@ -32,12 +32,12 @@
             </a>
         </li>
 
-        <!-- <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ request()->is('produk*') ? 'active' : '' }}">
+            <a href="/produk" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-spreadsheet"></i>
-                <div data-i18n="Data Pangkat">Data Pangkat</div>
+                <div data-i18n="Data Produk">Data Produk</div>
             </a>
-        </li> -->
+        </li>
 
         <!-- <li class="menu-item">
             <a href="#" class="menu-link">
