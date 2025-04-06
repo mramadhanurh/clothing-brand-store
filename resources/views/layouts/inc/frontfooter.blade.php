@@ -114,7 +114,7 @@
     <div class="footer-bottom">
         <div class="container">
             <p class="copyright">
-                &copy; 2022 <a href="#">codewithsadee</a>. All Rights Reserved
+                &copy; 2025 <a href="#">Familiarfaces</a>. All Rights Reserved
             </p>
             <ul class="footer-bottom-list">
                 <li>

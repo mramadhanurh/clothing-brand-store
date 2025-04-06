@@ -72,7 +72,7 @@
             <ul class="navbar-list">
 
                 <li>
-                    <a href="#home" class="navbar-link">Home</a>
+                    <a href="{{ url('/') }}" class="navbar-link">Home</a>
                 </li>
 
                 <li>

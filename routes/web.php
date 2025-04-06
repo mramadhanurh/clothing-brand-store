@@ -24,6 +24,8 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [BerandapageController::class, 'index']);
+Route::get('/category', [BerandapageController::class, 'category']);
+Route::get('view-category/{id}', [BerandapageController::class, 'viewcategory']);
 
 Auth::routes();
 
