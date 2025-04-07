@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [BerandapageController::class, 'index']);
 Route::get('/category', [BerandapageController::class, 'category']);
 Route::get('view-category/{id}', [BerandapageController::class, 'viewcategory']);
+Route::get('detail-products/{cate_id}/{prod_id}', [BerandapageController::class, 'viewproduct']);
 
 Auth::routes();
 

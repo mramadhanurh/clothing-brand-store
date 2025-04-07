@@ -2,9 +2,37 @@
 
 @section('title', 'Produk')
 
+@section('css')
+
+<style>
+    .breadcrumb-bar {
+        padding: 16px;
+        background-color: #80c2bd;
+        border-top: 1px solid #e0a800;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 50px;
+    }
+
+    .breadcrumb-title {
+        color: white;
+    }
+
+    .contai {
+        width: 90%;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+</style>
+
+@endsection
+
 @section('content')
 
-<!-- #PRODUCT -->
+<div class="breadcrumb-bar">
+    <div class="contai">
+        <h4 class="mb-0 breadcrumb-title">Collections / {{ $category->kategori }}</h4>
+    </div>
+</div>
 
 <section class="section product">
     <div class="container">
@@ -16,7 +44,7 @@
             <li>
                 <div class="product-card">
                     <figure class="card-banner">
-                        <a href="#">
+                        <a href="{{ url('detail-products/'.$category->id.'/'.$item->id) }}">
                             <img src="{{ asset('storage/'.$item->image) }}" loading="lazy" width="800" height="1034" class="w-100">
                         </a>
                         <div class="card-actions">

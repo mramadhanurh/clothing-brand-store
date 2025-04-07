@@ -31,4 +31,19 @@ class BerandapageController extends Controller
             return redirect('/')->with('status', "Id tidak ditemukan!");
         }
     }
+
+    public function viewproduct($cate_id, $prod_id)
+    {
+        if (Kategori::where('id', $cate_id)->exists()) 
+        {
+            if (Produk::where('id', $prod_id)->exists()) {
+                $products = Produk::where('id', $prod_id)->first();
+                return view('frontend.detailproducts', compact('products'));
+            }else{
+                return redirect('/')->with('status', "Detail Product tidak ditemukan!");
+            }
+        }else{
+            return redirect('/')->with('status', "Category Product tidak ditemukan!");
+        }
+    }
 }

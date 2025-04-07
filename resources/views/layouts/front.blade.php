@@ -17,11 +17,13 @@
     <link rel="stylesheet" href="{{ asset('template_frontend/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('template_frontend/assets/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('template_frontend/assets/css/owl.theme.default.min.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('template_frontend/assets/css/bootstrap.min.css') }}"> -->
 
     <!-- google font link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+    @yield('css')
 </head>
 
 <body>
@@ -40,6 +42,7 @@
     <script src="{{ asset('template_frontend/assets/js/script.js') }}"></script>
     <script src="{{ asset('template_frontend/assets/js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('template_frontend/assets/js/owl.carousel.min.js') }}"></script>
+    <!-- <script src="{{ asset('template_frontend/assets/js/bootstrap.bundle.min.js') }}"></script> -->
 
     <!-- ionicon link -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
