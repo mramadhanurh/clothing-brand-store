@@ -130,11 +130,6 @@
                             <a href="#">
                                 <img src="{{ asset('storage/'.$item->image) }}" loading="lazy" width="800" height="1034" class="w-100">
                             </a>
-                            <div class="card-actions">
-                                <button class="card-action-btn" aria-label="Quick view">
-                                    <ion-icon name="eye-outline"></ion-icon>
-                                </button>
-                            </div>
                         </figure>
 
                         <div class="card-content">
@@ -299,7 +294,7 @@
 
 <!-- #BLOG -->
 
-<section class="section blog">
+<!-- <section class="section blog">
     <div class="container">
 
         <h2 class="h2 section-title">Latest fashion news</h2>
@@ -423,41 +418,44 @@
         </ul>
 
     </div>
-</section>
+</section> -->
 
-<!-- #NEWSLETTER -->
 
-<section class="section newsletter">
-    <div class="container">
+@endsection
 
-        <div class="newsletter-card" style="background-image: url('./assets/images/newsletter-bg.png')">
 
-            <h2 class="card-title">Subscribe Newsletter</h2>
+@section('sweetalert')
 
-            <p class="card-text">
-                Enter your email below to be the first to know about new collections and product launches.
-            </p>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-            <form action="" class="card-form">
+    <script>
+        var imageUrl = "{{ isset($iklan->gambar_iklan) ? Storage::url('public/' . $iklan->gambar_iklan) : '' }}";
+        var imageCaption = "{{ isset($iklan->judul) ? $iklan->judul : '' }}";
+        var action = "{{ isset($iklan->aksi) ? $iklan->aksi : '' }}";
 
-                <div class="input-wrapper">
-                    <ion-icon name="mail-outline"></ion-icon>
-
-                    <input type="email" name="emal" placeholder="Enter your email" required class="input-field">
-                </div>
-
-                <button type="submit" class="btn btn-primary w-100">
-                    <span>Subscribe</span>
-
-                    <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                </button>
-
-            </form>
-
-        </div>
-
-    </div>
-</section>
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                @if (!empty($iklan))
+                    `@if ($iklan->aksi == 1)`
+                    Swal.fire({
+                        // imageUrl: imageUrl, // Ubah path gambar sesuai dengan lokasi dan nama gambar Anda
+                        // imageWidth: 400, // Ubah lebar gambar sesuai kebutuhan
+                        // imageHeight: 200, // Ubah tinggi gambar sesuai kebutuhan
+                        imageAlt: 'Contoh Gambar', // Ubah teks alternatif gambar sesuai kebutuhan
+                        html: "<div style='text-align: center;'><img src='" + imageUrl +
+                            "' style='max-width: 100%; max-height: 100%;'><p style='font-weight: bold; font-size: 25px;'>" +
+                            imageCaption + "</p></div>",
+                        showCloseButton: true,
+                        showConfirmButton: false,
+                        customClass: {
+                            closeButton: 'swal2-close' // Menggunakan custom class untuk tombol close
+                        }
+                    });
+                    `@endif`
+                @endif
+            }, 1000);
+        });
+    </script>
 
 @endsection
 

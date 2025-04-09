@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BerandapageController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\IklanController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\ProdukController;
@@ -46,5 +47,8 @@ Route::middleware(['auth', 'is_admin:1'])->group(function () {
 
     // Data Produk
     Route::resource('produk', ProdukController::class);
+
+    // Data Iklan
+    Route::resource('iklan', IklanController::class);
 
 });

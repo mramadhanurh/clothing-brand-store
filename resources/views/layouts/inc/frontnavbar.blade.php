@@ -19,11 +19,10 @@
 
         <div class="header-actions">
 
-            <button class="header-action-btn">
-                <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
-
+            <a href="{{ route('login') }}" class="header-action-btn">
+                <ion-icon name="person-outline" aria-hidden="true" style="color: black;"></ion-icon>
                 <p class="header-action-label">Sign in</p>
-            </button>
+            </a>
 
             <button class="header-action-btn">
                 <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
@@ -39,13 +38,13 @@
                 <div class="btn-badge green" aria-hidden="true">3</div>
             </button>
 
-            <button class="header-action-btn">
+            <!-- <button class="header-action-btn">
                 <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
 
                 <p class="header-action-label">Wishlisht</p>
 
                 <div class="btn-badge" aria-hidden="true">2</div>
-            </button>
+            </button> -->
 
         </div>
 

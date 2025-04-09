@@ -111,6 +111,9 @@
     }
 
     .add-to-cart-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
         padding: 10px 20px;
         background-color: #28a745;
         border: none;
@@ -118,7 +121,10 @@
         font-size: 16px;
         border-radius: 4px;
         cursor: pointer;
-        margin-left: 10px;
+    }
+
+    .add-to-cart-btn ion-icon {
+        font-size: 25px;
     }
 
     .add-to-cart-btn:hover {
@@ -162,7 +168,10 @@
                     <button onclick="decreaseQty()">-</button>
                     <input type="number" id="qty" value="1" min="1">
                     <button onclick="increaseQty()">+</button>
-                    <button class="add-to-cart-btn">Add to Cart</button>
+                    <button class="add-to-cart-btn">
+                        Add to Cart
+                        <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+                    </button>
                 </div>
                 <div class="product-description">
                     <br><br>

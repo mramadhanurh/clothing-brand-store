@@ -53,12 +53,37 @@
             </a>
         </li> -->
 
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Order</span></li>
+
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-cart"></i>
+                <div data-i18n="Data Pesanan">Data Pesanan</div>
+            </a>
+        </li>
+
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Pengguna</span></li>
 
         <li class="menu-item {{ request()->is('pengguna*') ? 'active' : '' }}">
             <a href="/pengguna" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user-pin"></i>
                 <div data-i18n="Data User">Data User</div>
+            </a>
+        </li>
+
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Setting</span></li>
+
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-store"></i>
+                <div data-i18n="Setting Store">Setting Store</div>
+            </a>
+        </li>
+
+        <li class="menu-item {{ request()->is('iklan*') ? 'active' : '' }}">
+            <a href="/iklan" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-window"></i>
+                <div data-i18n="Setting Iklan">Setting Iklan</div>
             </a>
         </li>
 
