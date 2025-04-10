@@ -21,17 +21,12 @@
                     </li>
                     <li>
                         <a href="#" class="social-link">
-                            <ion-icon name="logo-twitter"></ion-icon>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="social-link">
                             <ion-icon name="logo-instagram"></ion-icon>
                         </a>
                     </li>
                     <li>
                         <a href="#" class="social-link">
-                            <ion-icon name="logo-pinterest"></ion-icon>
+                            <ion-icon name="logo-whatsapp"></ion-icon>
                         </a>
                     </li>
                 </ul>

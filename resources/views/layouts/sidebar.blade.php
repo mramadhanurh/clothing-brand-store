@@ -73,8 +73,8 @@
 
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Setting</span></li>
 
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ request()->is('setting*') ? 'active' : '' }}">
+            <a href="/setting/1/edit" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-store"></i>
                 <div data-i18n="Setting Store">Setting Store</div>
             </a>

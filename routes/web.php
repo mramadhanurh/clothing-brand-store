@@ -7,6 +7,7 @@ use App\Http\Controllers\IklanController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,5 +51,8 @@ Route::middleware(['auth', 'is_admin:1'])->group(function () {
 
     // Data Iklan
     Route::resource('iklan', IklanController::class);
+
+    // Data Setting
+    Route::resource('setting', SettingController::class);
 
 });
