@@ -143,7 +143,7 @@
 </div>
 
 <div class="container">
-    <div class="card">
+    <div class="card product_data">
         <div class="row">
             <div class="col-left">
                 <img src="{{ asset('storage/'.$products->image) }}" alt="Product Image" class="product-image">
@@ -165,10 +165,11 @@
                 @endif
                 <br>
                 <div class="qty-control">
-                    <button onclick="decreaseQty()">-</button>
-                    <input type="number" id="qty" value="1" min="1">
-                    <button onclick="increaseQty()">+</button>
-                    <button class="add-to-cart-btn">
+                    <input type="hidden" value="{{ $products->id }}" class="prod_id">
+                    <button class="decrement-btn">-</button>
+                    <input type="number" class="qty-input" name="quantity" value="1" min="1">
+                    <button class="increment-btn">+</button>
+                    <button class="add-to-cart-btn addToCartBtn">
                         Add to Cart
                         <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
                     </button>
@@ -186,17 +187,73 @@
 @endsection
 
 @section('js')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-    function decreaseQty() {
-        var qty = document.getElementById('qty');
-        if (qty.value > 1) qty.value--;
-    }
+    $(document).ready(function () {
 
-    function increaseQty() {
-        var qty = document.getElementById('qty');
-        qty.value++;
-    }
+        $('.addToCartBtn').click(function (e) { 
+            e.preventDefault();
+            
+            var product_id = $(this).closest('.product_data').find('.prod_id').val();
+            var product_qty = $(this).closest('.product_data').find('.qty-input').val();
+
+            // alert(product_id);
+            // alert(product_qty);
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                method: "POST",
+                url: "/add-to-cart",
+                data: {
+                    'product_id' : product_id,
+                    'product_qty' : product_qty,
+                },
+                success: function (response) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil',
+                        text: response.status,
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            });
+
+        });
+
+        $('.increment-btn').click(function (e) { 
+            e.preventDefault();
+            
+            var inc_value = $('.qty-input').val();
+            var value = parseInt(inc_value, 10);
+            value = isNaN(value) ? 0 : value;
+            if(value < 10)
+            {
+                value++;
+                $('.qty-input').val(value);
+            }
+        });
+        
+        $('.decrement-btn').click(function (e) { 
+            e.preventDefault();
+            
+            var dec_value = $('.qty-input').val();
+            var value = parseInt(dec_value, 10);
+            value = isNaN(value) ? 0 : value;
+            if(value > 1)
+            {
+                value--;
+                $('.qty-input').val(value);
+            }
+        });
+
+    });
 </script>
 
 @endsection

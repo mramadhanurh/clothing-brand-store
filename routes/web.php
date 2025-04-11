@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BerandapageController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IklanController;
 use App\Http\Controllers\KategoriController;
@@ -29,6 +30,10 @@ Route::get('/', [BerandapageController::class, 'index']);
 Route::get('/category', [BerandapageController::class, 'category']);
 Route::get('view-category/{id}', [BerandapageController::class, 'viewcategory']);
 Route::get('detail-products/{cate_id}/{prod_id}', [BerandapageController::class, 'viewproduct']);
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('add-to-cart', [CartController::class, 'addProduct']);
+});
 
 Auth::routes();
 
