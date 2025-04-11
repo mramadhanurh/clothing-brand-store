@@ -30,13 +30,11 @@
                 <p class="header-action-label">Search</p>
             </button>
 
-            <button class="header-action-btn">
-                <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
-
+            <a href="{{ url('cart') }}" class="header-action-btn">
+                <ion-icon name="cart-outline" aria-hidden="true" style="color: black;"></ion-icon>
                 <p class="header-action-label">Cart</p>
-
                 <div class="btn-badge green" aria-hidden="true">3</div>
-            </button>
+            </a>
 
             <!-- <button class="header-action-btn">
                 <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
@@ -80,10 +78,6 @@
 
                 <li>
                     <a href="#" class="navbar-link">About</a>
-                </li>
-
-                <li>
-                    <a href="#blog" class="navbar-link">Blog</a>
                 </li>
 
                 <li>

@@ -217,7 +217,6 @@
                 success: function (response) {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Berhasil',
                         text: response.status,
                         confirmButtonColor: '#3085d6',
                         confirmButtonText: 'OK'
