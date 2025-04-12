@@ -124,6 +124,19 @@
         color: #fff;
     }
 
+    .badge {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 12px;
+        font-size: 14px;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    .bg-danger {
+        background-color: #dc3545;
+    }
+
     @media (max-width: 600px) {
         .cart-item {
             flex-direction: column;
@@ -163,15 +176,20 @@
                     Quantity:
                     <div class="qty-controls">
                         <input type="hidden" value="{{ $item->id_produk }}" class="prod_id">
-                        <button class="decrement-btn qty-btn changeQuantity">-</button>
-                        <input type="number" class="qty-input" name="quantity" value="{{ $item->produk_qty }}">
-                        <button class="increment-btn qty-btn changeQuantity">+</button>
+                        @if($item->products->qty > $item->produk_qty)
+                            <button class="decrement-btn qty-btn changeQuantity">-</button>
+                            <input type="number" class="qty-input" name="quantity" value="{{ $item->produk_qty }}">
+                            <button class="increment-btn qty-btn changeQuantity">+</button>
+                            @php $total += $item->products->harga * $item->produk_qty ; @endphp
+                        @else
+                            <span class="badge bg-danger">Stok Qty Habis</span>
+                        @endif
                     </div>
                 </div>
 
                 <button class="remove-btn delete-cart-item"><ion-icon name="trash-outline"></ion-icon> Remove</button>
             </div>
-            @php $total += $item->products->harga * $item->produk_qty ; @endphp
+            
         @endforeach
 
         <div class="card-footer">

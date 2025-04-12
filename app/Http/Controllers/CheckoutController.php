@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Checkout;
+use App\Models\Produk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,7 +12,18 @@ class CheckoutController extends Controller
 {
     public function index()
     {
+        $old_cartItems = Cart::where('id_user', Auth::id())->get();
+        foreach ($old_cartItems as $item)
+        {
+            if (!Produk::where('id', $item->id_produk)->where('qty', '>=', $item->produk_qty)->exists()) 
+            {
+                $removeItem = Cart::where('id_user', Auth::id())->where('id_produk', $item->id_produk)->first();
+                $removeItem->delete();
+            }
+        }
         $cartItems = Cart::where('id_user', Auth::id())->get();
+
+
         return view('frontend.checkout', compact('cartItems'));
     }
 

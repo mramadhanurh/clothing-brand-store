@@ -169,10 +169,13 @@
                     <button class="decrement-btn">-</button>
                     <input type="number" class="qty-input" name="quantity" value="1" min="1">
                     <button class="increment-btn">+</button>
-                    <button class="add-to-cart-btn addToCartBtn">
-                        Add to Cart
-                        <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
-                    </button>
+                    @if($products->qty > 0)
+                        <button class="add-to-cart-btn addToCartBtn">
+                            Add to Cart
+                            <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
+                        </button>
+                    @endif
+                    
                 </div>
                 <div class="product-description">
                     <br><br>
