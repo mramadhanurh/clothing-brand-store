@@ -177,7 +177,7 @@
         <div class="card-footer">
             <h5>Total Harga : Rp {{ number_format($total, 0, ',', '.') }}</h5>
 
-            <a href="#" class="btn-checkout">Proses Checkout</a>
+            <a href="{{ url('checkout') }}" class="btn-checkout">Proses Checkout</a>
         </div>
     </div>
 </div>
