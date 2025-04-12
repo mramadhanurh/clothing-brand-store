@@ -43,6 +43,23 @@ class CartController extends Controller
         return view('frontend.cart', compact('cartitems'));
     }
 
+    public function updateCart(Request $request)
+    {
+        $prod_id = $request->input('prod_id');
+        $prod_qty = $request->input('prod_qty');
+
+        if (Auth::check()) 
+        {
+            if (Cart::where('id_produk', $prod_id)->where('id_user', Auth::id())->exists())
+            {
+                $cart = Cart::where('id_produk', $prod_id)->where('id_user', Auth::id())->first();
+                $cart->produk_qty = $prod_qty;
+                $cart->update();
+                return response()->json(['status' => "Quantity Updated"]);
+            }
+        }
+    }
+
     public function deleteProduct(Request $request)
     {
         if (Auth::check()) 

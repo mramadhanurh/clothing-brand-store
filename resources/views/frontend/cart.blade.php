@@ -47,6 +47,13 @@
         margin-bottom: 8px;
     }
 
+    .product-price {
+        font-size: 14px;
+        color: #555;
+        margin-top: 4px;
+        font-weight: bold;
+    }
+
     .qty-container {
         text-align: center;
         min-width: 120px;
@@ -90,6 +97,33 @@
         min-width: 80px;
     }
 
+    .card-footer {
+        border-top: 1px solid #ddd;
+        padding: 16px;
+        background-color: #f8f9fa;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        font-size: 18px;
+    }
+
+    .btn-checkout {
+        padding: 8px 16px;
+        border: 2px solid #28a745;
+        background-color: transparent;
+        color: #28a745;
+        border-radius: 5px;
+        text-decoration: none;
+        /* font-weight: bold; */
+        transition: 0.3s ease;
+    }
+
+    .btn-checkout:hover {
+        background-color: #28a745;
+        color: #fff;
+    }
+
     @media (max-width: 600px) {
         .cart-item {
             flex-direction: column;
@@ -113,27 +147,38 @@
 
 <div class="container">
     <div class="card">
+        @php $total = 0; @endphp
         @foreach ($cartitems as $item)
             <div class="cart-item product_data">
                 <img src="{{ asset('storage/'.$item->products->image) }}" alt="Product Image Cart">
 
                 <div class="product-info">
                     <div class="product-name">{{ $item->products->nama_produk }}</div>
+                    <div class="product-price">
+                        Harga: Rp {{ number_format($item->products->harga, 0, ',', '.') }}
+                    </div>
                 </div>
 
                 <div class="qty-container">
                     Quantity:
                     <div class="qty-controls">
                         <input type="hidden" value="{{ $item->id_produk }}" class="prod_id">
-                        <button class="decrement-btn qty-btn">-</button>
+                        <button class="decrement-btn qty-btn changeQuantity">-</button>
                         <input type="number" class="qty-input" name="quantity" value="{{ $item->produk_qty }}">
-                        <button class="increment-btn qty-btn">+</button>
+                        <button class="increment-btn qty-btn changeQuantity">+</button>
                     </div>
                 </div>
 
                 <button class="remove-btn delete-cart-item"><ion-icon name="trash-outline"></ion-icon> Remove</button>
             </div>
+            @php $total += $item->products->harga * $item->produk_qty ; @endphp
         @endforeach
+
+        <div class="card-footer">
+            <h5>Total Harga : Rp {{ number_format($total, 0, ',', '.') }}</h5>
+
+            <a href="#" class="btn-checkout">Proses Checkout</a>
+        </div>
     </div>
 </div>
 
@@ -232,6 +277,31 @@
                             window.location.reload();
                         }
                     });
+                }
+            });
+        });
+
+        $('.changeQuantity').click(function (e) { 
+            e.preventDefault();
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            
+            var prod_id = $(this).closest('.product_data').find('.prod_id').val();
+            var qty = $(this).closest('.product_data').find('.qty-input').val();
+            data = {
+                'prod_id' : prod_id,
+                'prod_qty' : qty,
+            }
+            $.ajax({
+                method: "POST",
+                url: "update-cart",
+                data: data,
+                success: function (response) {
+                    window.location.reload();
                 }
             });
         });
