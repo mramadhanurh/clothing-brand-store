@@ -37,6 +37,17 @@ class CheckoutController extends Controller
         $order->email = $request->input('email');
         $order->no_hp = $request->input('no_hp');
         $order->alamat = $request->input('alamat');
+
+        // hitungan total harga
+        $total = 0;
+        $cartitems_total = Cart::where('id_user', Auth::id())->get();
+        foreach ($cartitems_total as $prod) 
+        {
+            $total += $prod->products->harga * $prod->produk_qty;
+        }
+
+        $order->total_harga = $total;
+
         $order->save();
 
         $cartItems = Cart::where('id_user', Auth::id())->get();

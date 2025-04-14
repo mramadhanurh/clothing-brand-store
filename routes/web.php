@@ -40,11 +40,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('cart', [CartController::class, 'viewcart']);
     Route::get('checkout', [CheckoutController::class, 'index']);
     Route::post('place-order', [CheckoutController::class, 'placeorder']);
+
+    // Home User
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    Route::get('my-orders', [HomeController::class, 'myOrder']);
+    Route::get('view-myorder/{id}', [HomeController::class, 'viewMyorder']);
+
 });
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 
