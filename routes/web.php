@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminorderController;
 use App\Http\Controllers\BerandapageController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
@@ -71,5 +72,9 @@ Route::middleware(['auth', 'is_admin:1'])->group(function () {
 
     // Data Setting
     Route::resource('setting', SettingController::class);
+
+    // Data Orders
+    Route::resource('orders', AdminorderController::class);
+    Route::put('update-status/{id}', [AdminorderController::class, 'updateStatus']);
 
 });
