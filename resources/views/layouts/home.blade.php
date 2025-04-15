@@ -41,6 +41,9 @@
     <script src="{{ asset('template/assets/vendor/js/helpers.js') }}"></script>
 
     <script src="{{ asset('template/assets/js/config.js') }}"></script>
+
+    <!-- Chart js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>

@@ -15,21 +15,19 @@
                     <div class="card-body">
                         <div class="card-title d-flex align-items-start justify-content-between">
                             <div class="avatar flex-shrink-0">
-                                <img src="{{ asset('template/assets/img/icons/unicons/paypal.png') }}" alt="Credit Card" class="rounded" />
+                                <img src="{{ asset('template/assets/img/icons/unicons/chart-success.png') }}" alt="Credit Card" class="rounded" />
                             </div>
                             <div class="dropdown">
                                 <button class="btn p-0" type="button" id="cardOpt4" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
-                                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                    <a class="dropdown-item" href="/kategori">View More</a>
                                 </div>
                             </div>
                         </div>
-                        <span class="d-block mb-1">Payments</span>
-                        <h3 class="card-title text-nowrap mb-2">$2,456</h3>
-                        <small class="text-danger fw-medium"><i class="bx bx-down-arrow-alt"></i> -14.82%</small>
+                        <span class="d-block mb-1">Kategori</span>
+                        <h3 class="card-title text-nowrap mb-2">{{ $vkategori }}</h3>
                     </div>
                 </div>
             </div>
@@ -38,21 +36,19 @@
                     <div class="card-body">
                         <div class="card-title d-flex align-items-start justify-content-between">
                             <div class="avatar flex-shrink-0">
-                                <img src="{{ asset('template/assets/img/icons/unicons/cc-primary.png') }}" alt="Credit Card" class="rounded" />
+                                <img src="{{ asset('template/assets/img/icons/unicons/chart-success.png') }}" alt="Credit Card" class="rounded" />
                             </div>
                             <div class="dropdown">
                                 <button class="btn p-0" type="button" id="cardOpt1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="cardOpt1">
-                                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                    <a class="dropdown-item" href="/produk">View More</a>
                                 </div>
                             </div>
                         </div>
-                        <span class="fw-medium d-block mb-1">Transactions</span>
-                        <h3 class="card-title mb-2">$14,857</h3>
-                        <small class="text-success fw-medium"><i class="bx bx-up-arrow-alt"></i> +28.14%</small>
+                        <span class="fw-medium d-block mb-1">Produk</span>
+                        <h3 class="card-title mb-2">{{ $vproduk }}</h3>
                     </div>
                 </div>
             </div>
@@ -68,14 +64,12 @@
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                    <a class="dropdown-item" href="/orders">View More</a>
                                 </div>
                             </div>
                         </div>
-                        <span class="fw-medium d-block mb-1">Profit</span>
-                        <h3 class="card-title mb-2">$12,628</h3>
-                        <small class="text-success fw-medium"><i class="bx bx-up-arrow-alt"></i> +72.80%</small>
+                        <span class="fw-medium d-block mb-1">Pesanan</span>
+                        <h3 class="card-title mb-2">{{ $vorder }}</h3>
                     </div>
                 </div>
             </div>
@@ -84,22 +78,19 @@
                     <div class="card-body">
                         <div class="card-title d-flex align-items-start justify-content-between">
                             <div class="avatar flex-shrink-0">
-                                <img src="{{ asset('template/assets/img/icons/unicons/wallet-info.png') }}" alt="Credit Card" class="rounded" />
+                                <img src="{{ asset('template/assets/img/icons/unicons/chart-success.png') }}" alt="Credit Card" class="rounded" />
                             </div>
                             <div class="dropdown">
                                 <button class="btn p-0" type="button" id="cardOpt6" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
-                                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                                    <a class="dropdown-item" href="/pengguna">View More</a>
                                 </div>
                             </div>
                         </div>
-                        <span class="fw-medium d-block mb-1">Sales</span>
-                        <h3 class="card-title mb-2">$4,679</h3>
-                        <small class="text-success fw-medium"><i class="bx bx-up-arrow-alt"></i>
-                            +28.42%</small>
+                        <span class="fw-medium d-block mb-1">User</span>
+                        <h3 class="card-title mb-2">{{ $vuser }}</h3>
                     </div>
                 </div>
             </div>
@@ -109,8 +100,9 @@
             <div class="card">
                 <div class="row row-bordered g-0">
 
-                    <h5 class="card-header m-0 me-2 pb-3">Total Revenue</h5>
-                    <div id="totalRevenueChart" class="px-2"></div>
+                    <h5 class="card-header m-0 me-2 pb-3">Data Pesanan</h5>
+                    <!-- <div id="totalRevenueChart" class="px-2"></div> -->
+                    <canvas id="barChart" style="max-width: 100%; height: 300px;"></canvas>
                 </div>
             </div>
         </div>
@@ -122,5 +114,40 @@
 
 <div class="content-backdrop fade"></div>
 </div>
+
+@endsection
+
+@section('js')
+
+<script>
+    $(function () {
+        var datas = @json($datas);
+        var barCanvas = $("#barChart");
+        var barChart = new Chart(barCanvas, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Data Pesanan, {{ date("Y") }}',
+                    data: datas,
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            precision: 0
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
 
 @endsection
