@@ -37,6 +37,10 @@ Route::post('add-to-cart', [CartController::class, 'addProduct']);
 Route::post('delete-cart-item', [CartController::class, 'deleteProduct']);
 Route::post('update-cart', [CartController::class, 'updateCart']);
 
+// Profil
+Route::get('/change-password', [HomeController::class, 'changePassword'])->name('change-password');
+Route::post('/change-password', [HomeController::class, 'updatePassword'])->name('update-password');
+
 Route::middleware(['auth'])->group(function () {
     Route::get('cart', [CartController::class, 'viewcart']);
     Route::get('checkout', [CheckoutController::class, 'index']);

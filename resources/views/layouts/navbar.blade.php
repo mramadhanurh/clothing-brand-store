@@ -49,8 +49,11 @@
                     </li>
                     <li>
                         <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
+                        <a class="dropdown-item" href="/change-password">
+                            <i class="bx bx-user me-2"></i>
+                            Ganti Password
+                        </a>
+                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <i class="bx bx-power-off me-2"></i>
                             <span class="align-middle">Log Out</span>
