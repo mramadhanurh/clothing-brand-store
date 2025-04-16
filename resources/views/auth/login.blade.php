@@ -51,7 +51,7 @@
 
                         <form method="POST" action="{{ route('login') }}">
                         @csrf
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label for="email" class="form-label">Email Address</label>
                                 <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" placeholder="Enter your email address" required autocomplete="email" autofocus />
 
@@ -60,7 +60,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <div class="mb-3 form-password-toggle">
                                 <div class="d-flex justify-content-between">
                                     <label class="form-label" for="password">Password</label>

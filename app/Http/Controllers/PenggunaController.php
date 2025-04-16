@@ -59,7 +59,7 @@ class PenggunaController extends Controller
             'name' => $request->name,
             'is_admin' => $request->is_admin,
             'email' => $request->email,
-            'password' => bcrypt($request->password),
+            'password' => $request->password,
         ]);
 
         return response()->json([
@@ -141,7 +141,7 @@ class PenggunaController extends Controller
 
         // Hanya update password jika diisi
         if ($request->filled('password')) {
-            $data['password'] = Hash::make($request->password);
+            $data['password'] = $request->password;
         }
 
         $user->update($data);

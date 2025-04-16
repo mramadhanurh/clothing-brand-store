@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminorderController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\BerandapageController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
@@ -27,6 +29,14 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
+Route::get('/user-registered', [RegisterController::class, 'userRegistered'])->name('user-registered');
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/', [BerandapageController::class, 'index']);
 Route::get('/category', [BerandapageController::class, 'category']);
@@ -54,7 +64,7 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
-Auth::routes();
+// Auth::routes();
 
 // Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 
