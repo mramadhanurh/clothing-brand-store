@@ -50,6 +50,33 @@
 
     @yield('sweetalert')
     @yield('js')
+
+    <script>
+        $(document).ready(function () {
+            
+            loadcart();
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            function loadcart()
+            {
+                $.ajax({
+                    method: "GET",
+                    url: "/load-cart-data",
+                    success: function (response) {
+                        $('.cart-count').html('');
+                        $('.cart-count').html(response.count);
+                        // console.log(response.count);
+                    }
+                });
+            }
+        });
+
+    </script>
 </body>
 
 </html>

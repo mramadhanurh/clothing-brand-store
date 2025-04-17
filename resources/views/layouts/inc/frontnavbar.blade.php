@@ -33,7 +33,7 @@
             <a href="{{ url('cart') }}" class="header-action-btn">
                 <ion-icon name="cart-outline" aria-hidden="true" style="color: black;"></ion-icon>
                 <p class="header-action-label">Cart</p>
-                <div class="btn-badge green" aria-hidden="true">3</div>
+                <div class="btn-badge green cart-count" aria-hidden="true">0</div>
             </a>
 
             <!-- <button class="header-action-btn">

@@ -223,22 +223,26 @@
                 }
             });
 
-            // $.ajax({
-            //     method: "POST",
-            //     url: "/add-to-cart",
-            //     data: {
-            //         'product_id' : product_id,
-            //         'product_qty' : product_qty,
-            //     },
-            //     success: function (response) {
-            //         Swal.fire({
-            //             icon: 'success',
-            //             text: response.status,
-            //             confirmButtonColor: '#3085d6',
-            //             confirmButtonText: 'OK'
-            //         });
-            //     }
-            // });
+            $.ajax({
+                method: "POST",
+                url: "/add-to-cart",
+                data: {
+                    'product_id' : product_id,
+                    'product_qty' : product_qty,
+                },
+                success: function (response) {
+                    Swal.fire({
+                        icon: 'success',
+                        text: response.status,
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            loadcart();
+                        }
+                    });
+                }
+            });
 
         });
 
