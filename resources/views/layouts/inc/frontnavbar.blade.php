@@ -19,10 +19,24 @@
 
         <div class="header-actions">
 
-            <a href="{{ route('login') }}" class="header-action-btn">
-                <ion-icon name="person-outline" aria-hidden="true" style="color: black;"></ion-icon>
-                <p class="header-action-label">Sign in</p>
-            </a>
+            @auth
+                @if (Auth::user()->is_admin == 1)
+                    <a href="{{ url('/admin') }}" class="header-action-btn">
+                        <ion-icon name="person-outline" aria-hidden="true" style="color: black;"></ion-icon>
+                        <p class="header-action-label">Dashboard Admin</p>
+                    </a>
+                @else
+                    <a href="{{ url('/home') }}" class="header-action-btn">
+                        <ion-icon name="person-outline" aria-hidden="true" style="color: black;"></ion-icon>
+                        <p class="header-action-label">My Home</p>
+                    </a>
+                @endif
+            @else
+                <a href="{{ route('login') }}" class="header-action-btn">
+                    <ion-icon name="person-outline" aria-hidden="true" style="color: black;"></ion-icon>
+                    <p class="header-action-label">Sign in</p>
+                </a>
+            @endauth
 
             <button class="header-action-btn">
                 <ion-icon name="search-outline" aria-hidden="true"></ion-icon>

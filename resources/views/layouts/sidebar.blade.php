@@ -92,6 +92,15 @@
                 </a>
             </li>
 
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">Beranda</span></li>
+
+            <li class="menu-item">
+                <a href="/" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-store"></i>
+                    <div data-i18n="Store">Store</div>
+                </a>
+            </li>
+
         @endif
     </ul>
 </aside>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -13,7 +14,11 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('home');
+        $cartcount = Cart::where('id_user', Auth::id())->count();
+        $ordercount = Order::where('id_user', Auth::id())->count();
+        $cartitems = Cart::where('id_user', Auth::id())->limit(6)->get();
+        $orderitems = Order::where('id_user', Auth::id())->limit(6)->get();
+        return view('home', compact('cartcount', 'ordercount', 'cartitems', 'orderitems'));
     }
 
     public function myOrder()
