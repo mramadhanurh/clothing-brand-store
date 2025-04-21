@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use App\Models\Produk;
+use App\Models\ProdukImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -183,5 +184,43 @@ class ProdukController extends Controller
             'status' => 'success',
             'message' => 'Data deleted successfully!',
         ], 200);
+    }
+
+    public function formUploadGambar($id)
+    {
+        $produk = Produk::findOrFail($id);
+        return view('produk.upload-gambar', compact('produk'));
+    }
+
+    public function uploadGambar(Request $request, $id)
+    {
+        $request->validate([
+            'images.*' => 'image|mimes:jpeg,png,jpg,svg|max:2048'
+        ]);
+
+        foreach ($request->file('images') as $image) {
+            $path = $image->store('produk_images', 'public');
+            ProdukImage::create([
+                'produk_id' => $id,
+                'image' => $path
+            ]);
+        }
+
+        return back()->with('status', 'Gambar berhasil ditambahkan.');
+    }
+
+    public function destroyImage($id)
+    {
+        $image = ProdukImage::findOrFail($id);
+
+        // Hapus file dari storage
+        if (Storage::exists('public/' . $image->image)) {
+            Storage::delete('public/' . $image->image);
+        }
+
+        // Hapus data dari database
+        $image->delete();
+
+        return back()->with('status', 'Gambar berhasil dihapus.');
     }
 }

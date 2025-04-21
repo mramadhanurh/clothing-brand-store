@@ -82,6 +82,11 @@ Route::middleware(['auth', 'is_admin:1'])->group(function () {
 
     // Data Produk
     Route::resource('produk', ProdukController::class);
+    // Multi Images Produk
+    Route::get('/produk/{id}/upload-gambar', [ProdukController::class, 'formUploadGambar'])->name('produk.upload');
+    Route::post('/produk/{id}/upload-gambar', [ProdukController::class, 'uploadGambar']);
+    // Delete Images Produk
+    Route::delete('/produk/image/{id}', [ProdukController::class, 'destroyImage'])->name('produk.image.destroy');
 
     // Data Iklan
     Route::resource('iklan', IklanController::class);

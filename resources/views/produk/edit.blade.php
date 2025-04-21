@@ -93,6 +93,9 @@
                                         <small class="text-danger">*Abaikan jika tidak ingin
                                             memperbarui gambar. File format png/jpg/svg, maksimal 2MB.</small>
                                     </div>
+                                    <div class="row">
+                                        <small><a href="{{ route('produk.upload', $produk->id) }}">Tambahkan Image Lainnya</a></small>
+                                    </div>
                                 </div>
 
                                 <span class="invalid-feedback" role="alert" id="error-image">
