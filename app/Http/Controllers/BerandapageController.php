@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Iklan;
 use App\Models\Kategori;
 use App\Models\Produk;
+use App\Models\ProdukImage;
 use Illuminate\Http\Request;
 
 class BerandapageController extends Controller
@@ -24,27 +25,27 @@ class BerandapageController extends Controller
 
     public function viewcategory($id)
     {
-        if (Kategori::where('id', $id)->exists()) 
-        {
+        if (Kategori::where('id', $id)->exists()) {
             $category = Kategori::where('id', $id)->first();
             $products = Produk::where('id_kategori', $category->id)->get();
             return view('frontend.products', compact('category', 'products'));
-        }else{
+        } else {
             return redirect('/')->with('status', "Id tidak ditemukan!");
         }
     }
 
     public function viewproduct($cate_id, $prod_id)
     {
-        if (Kategori::where('id', $cate_id)->exists()) 
-        {
+        if (Kategori::where('id', $cate_id)->exists()) {
             if (Produk::where('id', $prod_id)->exists()) {
                 $products = Produk::where('id', $prod_id)->first();
-                return view('frontend.detailproducts', compact('products'));
-            }else{
+                $productImages = ProdukImage::where('produk_id', $products->id)->get();
+
+                return view('frontend.detailproducts', compact('products', 'productImages'));
+            } else {
                 return redirect('/')->with('status', "Detail Product tidak ditemukan!");
             }
-        }else{
+        } else {
             return redirect('/')->with('status', "Category Product tidak ditemukan!");
         }
     }

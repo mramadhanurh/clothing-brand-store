@@ -51,7 +51,7 @@ class ProdukController extends Controller
             'status' => 'required',
             'deskripsi' => 'required',
         ]);
-    
+
         // Upload Image
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -117,7 +117,7 @@ class ProdukController extends Controller
     public function update(Request $request, $id)
     {
         $produk = Produk::findOrFail($id);
-    
+
         $request->validate([
             'nama_produk' => 'required|string|max:255',
             'id_kategori' => 'required',
@@ -127,7 +127,7 @@ class ProdukController extends Controller
             'status' => 'required',
             'deskripsi' => 'required',
         ]);
-    
+
         $data = [
             'nama_produk' => $request->nama_produk,
             'id_kategori' => $request->id_kategori,
@@ -136,25 +136,25 @@ class ProdukController extends Controller
             'status' => $request->status,
             'deskripsi' => $request->deskripsi,
         ];
-    
+
         // Cek apakah ada file gambar baru yang diunggah
         if ($request->hasFile('image')) {
             // Hapus gambar lama jika ada
             if ($produk->image) {
                 Storage::disk('public')->delete($produk->image);
             }
-    
+
             // Simpan gambar baru
             $image = $request->file('image');
             $imagePath = $image->store('produk', 'public');
-    
+
             // Tambahkan path gambar baru ke data yang akan diupdate
             $data['image'] = $imagePath;
         }
-    
+
         // Update data produk
         $produk->update($data);
-    
+
         return response()->json([
             'status' => 'success',
             'message' => 'Data updated successfully!',
@@ -195,7 +195,14 @@ class ProdukController extends Controller
     public function uploadGambar(Request $request, $id)
     {
         $request->validate([
+            'images' => 'required|array',
             'images.*' => 'image|mimes:jpeg,png,jpg,svg|max:2048'
+        ], [
+            'images.required' => 'Silakan pilih gambar terlebih dahulu.',
+            'images.array' => 'Format gambar tidak valid.',
+            'images.*.image' => 'Setiap file harus berupa gambar.',
+            'images.*.mimes' => 'Gambar harus berformat jpeg, png, jpg, atau svg.',
+            'images.*.max' => 'Ukuran gambar maksimal 2MB.',
         ]);
 
         foreach ($request->file('images') as $image) {
