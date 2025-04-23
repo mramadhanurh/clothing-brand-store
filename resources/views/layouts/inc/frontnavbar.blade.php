@@ -5,13 +5,16 @@
 
         <div class="overlay" data-overlay></div>
 
-        <div class="header-search">
-            <input type="search" name="search" placeholder="Search Product..." class="input-field">
+        <form action="{{ url('searchproduct') }}" method="POST">
+            @csrf
+            <div class="header-search">
+                <input type="search" id="search_product" name="nama_produk" placeholder="Search Product..." class="input-field">
 
-            <button class="search-btn" aria-label="Search">
-                <ion-icon name="search-outline"></ion-icon>
-            </button>
-        </div>
+                <button type="submit" class="search-btn" aria-label="Search">
+                    <ion-icon name="search-outline"></ion-icon>
+                </button>
+            </div>
+        </form>
 
         <a href="#" class="logo">
             <img src="{{ asset('template_frontend/assets/images/logo.svg') }}" alt="Casmart logo" width="130" height="31">

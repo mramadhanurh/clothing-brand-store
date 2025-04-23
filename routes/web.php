@@ -49,6 +49,9 @@ Route::post('update-cart', [CartController::class, 'updateCart']);
 
 Route::get('load-cart-data', [CartController::class, 'cartcount']);
 
+Route::get('product-list', [CartController::class, 'productSearch']);
+Route::post('searchproduct', [CartController::class, 'searchProduct']);
+
 // Profil
 Route::get('/change-password', [HomeController::class, 'changePassword'])->name('change-password');
 Route::post('/change-password', [HomeController::class, 'updatePassword'])->name('update-password');

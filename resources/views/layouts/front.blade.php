@@ -20,6 +20,8 @@
     <!-- <link rel="stylesheet" href="{{ asset('template_frontend/assets/css/bootstrap.min.css') }}"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+
     <!-- google font link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,6 +52,27 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+
+    <script>
+        var availableTags = [ ];
+        $.ajax({
+            method: "GET",
+            url: "/product-list",
+            success: function (response) {
+                // console.log(response);
+                startAutoComplete(response);
+            }
+        });
+
+        function startAutoComplete(availableTags) { 
+            $( "#search_product" ).autocomplete({
+                source: availableTags
+            });
+        }
+
+    </script>
 
     @yield('sweetalert')
     @yield('js')

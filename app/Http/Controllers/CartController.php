@@ -81,6 +81,36 @@ class CartController extends Controller
         $cartcount = Cart::where('id_user', Auth::id())->count();
         return response()->json(['count' => $cartcount]);
     }
+
+    public function productSearch()
+    {
+        $products = Produk::select('nama_produk')->where('status', '1')->get();
+        $data = [];
+
+        foreach ($products as $item) {
+            $data[] = $item['nama_produk'];
+        }
+
+        return $data;
+    }
+
+    public function searchProduct(Request $request)
+    {
+        $searched_product = $request->nama_produk;
+
+        if ($searched_product != "") 
+        {
+            $product = Produk::where("nama_produk", "LIKE", "%$searched_product%")->first();
+            if ($product) 
+            {
+                return redirect('detail-products/'.$product->kategori->id.'/'.$product->id);
+            }else{
+                return redirect()->back()->with("searchstatus", "Tidak ada produk yang sesuai dengan pencarian Anda.");
+            }
+        }else{
+            return redirect()->back();
+        }
+    }
     
     public function index()
     {
