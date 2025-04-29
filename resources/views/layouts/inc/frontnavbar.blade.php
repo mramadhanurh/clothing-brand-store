@@ -16,8 +16,8 @@
             </div>
         </form>
 
-        <a href="#" class="logo">
-            <img src="{{ asset('template_frontend/assets/images/logo.svg') }}" alt="Casmart logo" width="130" height="31">
+        <a href="{{ url('/') }}" class="logo">
+            <img src="{{ asset('storage/'.$setting->image_logo_web) }}" alt="FamiliarFaces logo" width="130" height="31">
         </a>
 
         <div class="header-actions">
@@ -50,7 +50,7 @@
             <a href="{{ url('cart') }}" class="header-action-btn">
                 <ion-icon name="cart-outline" aria-hidden="true" style="color: black;"></ion-icon>
                 <p class="header-action-label">Cart</p>
-                <div class="btn-badge green cart-count" aria-hidden="true">0</div>
+                <div class="btn-badge black cart-count" aria-hidden="true">0</div>
             </a>
 
             <!-- <button class="header-action-btn">
@@ -73,8 +73,8 @@
 
             <div class="navbar-top">
 
-                <a href="#" class="logo">
-                    <img src="./assets/images/logo.svg" alt="Casmart logo" width="130" height="31">
+                <a href="{{ url('/') }}" class="logo">
+                    <img src="{{ asset('storage/'.$setting->image_logo_web) }}" alt="FamiliarFaces logo" width="130" height="31">
                 </a>
 
                 <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
@@ -90,16 +90,16 @@
                 </li>
 
                 <li>
-                    <a href="#" class="navbar-link">Shop</a>
+                    <a href="{{ url('category') }}" class="navbar-link">Category</a>
                 </li>
 
                 <li>
-                    <a href="#" class="navbar-link">About</a>
+                    <a href="{{ url('shop') }}" class="navbar-link">Shop</a>
                 </li>
 
-                <li>
+                <!-- <li>
                     <a href="#" class="navbar-link">Contact</a>
-                </li>
+                </li> -->
 
             </ul>
 

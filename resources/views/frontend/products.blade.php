@@ -7,8 +7,8 @@
 <style>
     .breadcrumb-bar {
         padding: 16px;
-        background-color: #80c2bd;
-        border-top: 1px solid #e0a800;
+        background-color: #000000;
+        border-top: 1px solid #000000;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         margin-bottom: 50px;
     }
@@ -48,16 +48,9 @@
                             <img src="{{ asset('storage/'.$item->image) }}" loading="lazy" width="800" height="1034" class="w-100">
                         </a>
                         <div class="card-actions">
-                            <button class="card-action-btn" aria-label="Quick view">
+                            <a href="{{ url('detail-products/'.$category->id.'/'.$item->id) }}" class="card-action-btn" aria-label="Quick view">
                                 <ion-icon name="eye-outline"></ion-icon>
-                            </button>
-                            <button class="card-action-btn cart-btn">
-                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
-                                <p>Add to Cart</p>
-                            </button>
-                            <button class="card-action-btn" aria-label="Add to Whishlist">
-                                <ion-icon name="heart-outline"></ion-icon>
-                            </button>
+                            </a>
                         </div>
                     </figure>
 
@@ -66,7 +59,7 @@
                             <a href="#">{{ $item->nama_produk }}</a>
                         </h3>
                         <div class="card-price">
-                            <data>Rp. {{ $item->harga }}</data>
+                            <data>Rp. {{ number_format( $item->harga, 0, ',', '.') }}</data>
                         </div>
                     </div>
                 </div>

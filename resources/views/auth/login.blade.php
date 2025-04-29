@@ -8,7 +8,7 @@
     <title>Login - Clothing Brand</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('template/assets/img/illustrations/papua_barat.png') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('template/assets/img/illustrations/logo_familiarfaces.png') }}" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -34,6 +34,41 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('template/assets/js/config.js') }}"></script>
+
+    <style>
+        body {
+            background-color: #000000; /* Background halaman full hitam */
+        }
+
+        .card {
+            background-color: #000000; /* Card juga hitam */
+            border: 1px solid #444; /* Optional: biar ada garis batas tipis abu */
+        }
+
+        .card-body, .card h4, .card p, .card label, .card input, .card button, .card a {
+            color: #ffffff; /* Semua teks, input, button, dan link di card jadi putih */
+        }
+
+        .form-control {
+            background-color: #222222; /* Field input jadi abu gelap */
+            color: #ffffff; /* Teks di input putih */
+            border: 1px solid #555555; /* Batas input */
+        }
+
+        .form-control::placeholder {
+            color: #aaaaaa; /* Placeholder input warna abu terang */
+        }
+
+        .btn-primary {
+            background-color: #1f1f1f;
+            border-color: #444;
+        }
+
+        .btn-primary:hover {
+            background-color: #333;
+            border-color: #555;
+        }
+    </style>
 </head>
 
 <body>
@@ -43,9 +78,17 @@
         <div class="authentication-wrapper authentication-basic container-p-y">
             <div class="authentication-inner">
                 <!-- Register -->
+                <!-- Logo -->
+                <div class="app-brand justify-content-center mb-4">
+                    <a href="index.html" class="app-brand-link gap-2">
+                    <span class="app-brand-logo demo">
+                        <img src="{{ asset('template/assets/img/illustrations/logo_familiarfaces.png') }}" alt="" width="300px">
+                    </span>
+                    </a>
+                </div>
+                <!-- /Logo -->
                 <div class="card">
                     <div class="card-body">
-                        <!-- /Logo -->
                         <h4 class="mb-2">Selamat Datang di Login</h4>
                         <p class="mb-4">Clothing Brand</p>
 

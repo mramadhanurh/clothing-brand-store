@@ -42,6 +42,7 @@ Route::get('/', [BerandapageController::class, 'index']);
 Route::get('/category', [BerandapageController::class, 'category']);
 Route::get('view-category/{id}', [BerandapageController::class, 'viewcategory']);
 Route::get('detail-products/{cate_id}/{prod_id}', [BerandapageController::class, 'viewproduct']);
+Route::get('/shop', [BerandapageController::class, 'shop']);
 
 Route::post('add-to-cart', [CartController::class, 'addProduct']);
 Route::post('delete-cart-item', [CartController::class, 'deleteProduct']);

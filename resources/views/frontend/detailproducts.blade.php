@@ -6,8 +6,8 @@
     <style>
         .breadcrumb-bar {
             padding: 16px;
-            background-color: #80c2bd;
-            border-top: 1px solid #e0a800;
+            background-color: #000000;
+            border-top: 1px solid #000000;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-bottom: 50px;
         }
@@ -212,7 +212,7 @@
                         <div class="product-title">{{ $products->nama_produk }}</div>
                         <hr>
                         <br>
-                        <div class="product-price">Rp {{ $products->harga }}</div>
+                        <div class="product-price">Rp. {{ number_format( $products->harga, 0, ',', '.') }}</div>
 
                         @if ($products->qty > 0)
                             <div class="product-status">

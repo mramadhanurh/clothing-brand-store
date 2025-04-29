@@ -7,6 +7,7 @@ use App\Models\Checkout;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Produk;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,9 +25,10 @@ class CheckoutController extends Controller
             }
         }
         $cartItems = Cart::where('id_user', Auth::id())->get();
+        $setting = Setting::first();
 
 
-        return view('frontend.checkout', compact('cartItems'));
+        return view('frontend.checkout', compact('cartItems', 'setting'));
     }
 
     public function placeorder(Request $request)

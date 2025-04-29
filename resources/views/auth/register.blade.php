@@ -8,7 +8,7 @@
     <title>Register - Clothing Brand</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('template/assets/img/illustrations/papua_barat.png') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('template/assets/img/illustrations/logo_familiarfaces.png') }}" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -34,6 +34,50 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('template/assets/js/config.js') }}"></script>
+
+    <style>
+        body {
+            background-color: #000000; /* Background hitam untuk seluruh halaman */
+        }
+
+        .card {
+            background-color: #000000; /* Card juga hitam */
+            border: 1px solid #444; /* Batas card abu tipis */
+        }
+
+        .card-body, .card h4, .card p, .card label, .card input, .card button, .card a {
+            color: #ffffff; /* Semua teks, input, button, dan link di dalam card berwarna putih */
+        }
+
+        .form-control {
+            background-color: #222222; /* Input field warna abu gelap */
+            color: #ffffff; /* Teks input putih */
+            border: 1px solid #555555; /* Batas input */
+        }
+
+        .form-control::placeholder {
+            color: #aaaaaa; /* Placeholder input warna abu terang */
+        }
+
+        .btn-primary {
+            background-color: #1f1f1f;
+            border-color: #444;
+        }
+
+        .btn-primary:hover {
+            background-color: #333333;
+            border-color: #555;
+        }
+
+        /* Optional: Membuat link di bawah form (Login account) warnanya biru muda */
+        .card a {
+            color: #66b2ff;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 
 <body>
@@ -44,6 +88,15 @@
         <div class="authentication-wrapper authentication-basic container-p-y">
             <div class="authentication-inner">
                 <!-- Register -->
+                <!-- Logo -->
+                <div class="app-brand justify-content-center">
+                    <a href="index.html" class="app-brand-link gap-2">
+                    <span class="app-brand-logo demo">
+                        <img src="{{ asset('template/assets/img/illustrations/logo_familiarfaces.png') }}" alt="" width="300px">
+                    </span>
+                    </a>
+                </div>
+                <!-- /Logo -->
                 <div class="card">
                     <div class="card-body">
                         <!-- /Logo -->

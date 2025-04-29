@@ -393,13 +393,14 @@ h3 > a { color: inherit; }
 .hero .container { width: 100%; }
 
 .hero-subtitle {
-  color: var(--eerie-black);
+  color: var(--white);
   font-size: var(--fs-4);
   font-weight: var(--fw-600);
   margin-bottom: 20px;
 }
 
 .hero-title {
+  color: var(--white);
   margin-bottom: 35px;
   max-width: 12ch;
 }

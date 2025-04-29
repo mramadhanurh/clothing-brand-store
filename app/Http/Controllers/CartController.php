@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Produk;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -40,7 +41,8 @@ class CartController extends Controller
     public function viewcart()
     {
         $cartitems = Cart::where('id_user', Auth::id())->get();
-        return view('frontend.cart', compact('cartitems'));
+        $setting = Setting::first();
+        return view('frontend.cart', compact('cartitems', 'setting'));
     }
 
     public function updateCart(Request $request)

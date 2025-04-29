@@ -5,27 +5,25 @@
         <div class="container">
             <div class="footer-brand">
                 <a href="#" class="logo">
-                    <img src="{{ asset('template_frontend/assets/images/logo.svg') }}" alt="Casmart logo">
+                    <img src="{{ asset('storage/'.$setting->image_logo_web) }}" alt="FamiliarFaces logo" width="150" height="51">
                 </a>
                 <p class="footer-text">
-                    Casmart is a fashion theme for presents a complete wardrobe of uniquely crafted Ethnic Wear, Casuals, Edgy
-                    Denims, &
-                    Accessories inspired from the most contemporary
+                    {{ $setting->description }}
                 </p>
 
                 <ul class="social-list">
                     <li>
-                        <a href="#" class="social-link">
+                        <a href="https://web.facebook.com/{{ $setting->facebook }}" class="social-link" target="_blank" rel="noopener noreferrer">
                             <ion-icon name="logo-facebook"></ion-icon>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="social-link">
+                        <a href="https://www.instagram.com/{{ $setting->instagram }}" class="social-link" target="_blank" rel="noopener noreferrer">
                             <ion-icon name="logo-instagram"></ion-icon>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="social-link">
+                        <a href="https://wa.me/{{ $setting->whatsapp }}" class="social-link" target="_blank" rel="noopener noreferrer">
                             <ion-icon name="logo-whatsapp"></ion-icon>
                         </a>
                     </li>
