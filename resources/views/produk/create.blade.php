@@ -2,6 +2,10 @@
 
 @section('title', 'Data Produk')
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('vendor/summernote/summernote-bs4.min.css') }}">
+@endsection
+
 @section('content')
 
 <div class="content-wrapper">
@@ -72,7 +76,7 @@
 
                             <div class="mb-3">
                                 <label class="form-label">Deskripsi</label>
-                                <textarea type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" value="{{ old('deskripsi') }}" placeholder="Masukkan Deskripsi" rows="3"></textarea>
+                                <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="summernote" name="deskripsi" value="{{ old('deskripsi') }}" placeholder="Masukkan Deskripsi" rows="3"></textarea>
 
                                 <span class="invalid-feedback" role="alert" id="error-deskripsi">
                                     <strong></strong>
@@ -107,8 +111,23 @@
 @endsection
 
 @section('js')
+<script src="{{ asset('vendor/summernote/summernote-bs4.min.js') }}"></script>
     <script>
         $(document).ready(function() {
+            $('#summernote').summernote({
+                placeholder: 'Masukkan Deskripsi',
+                tabsize: 2,
+                height: 180,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['view', ['fullscreen', 'codeview', 'help']],
+                ],
+            });
 
             $('#submitForm').on('submit', function(event) {
                 event.preventDefault();

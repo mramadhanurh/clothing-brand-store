@@ -240,7 +240,7 @@
                         <div class="product-description">
                             <br><br>
                             Deskripsi : <br><br>
-                            {{ $products->deskripsi }}
+                            {!! $products->deskripsi !!}
                         </div>
                     </div>
                 </div>

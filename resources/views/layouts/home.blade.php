@@ -32,6 +32,8 @@
     <link rel="stylesheet" href="{{ asset('template/assets/vendor/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('template/assets/vendor/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 
+    @yield('css')
+
     <!-- Sweet Alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
